@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { setState } from '../store/reducers/appReducer'
 import { useStorage } from '../hooks/useStorage'
 
-const Subscribe = () => {
+const Subscriptions = () => {
   const state = useSelector((state) => state.app)
 
   const dispatch = useDispatch()
@@ -23,28 +23,20 @@ const Subscribe = () => {
   }
 
   return (
-    <div className='subscribe-component'>
+    <div className='subscriptions-component'>
       <ul className='list-group mt-3'>
-        {state.selectedUser.subscribes.length !== 0 ? (
-          state.selectedUser.subscribes.map((subscribe) => {
-            return (
-              <li
-                className='list-group-item'
-                onClick={() =>
-                  onGoToProfile(state.subscribes.byId[subscribe].owner)
-                }
-                key={state.subscribes.byId[subscribe].id}
-              >
-                {state.subscribes.byId[subscribe].owner}
-              </li>
-            )
-          })
+        {state.userData.subscriptions !== 0 ? (
+          state.userData.subscriptions.map((subscription) => (
+            <li key={state.user.entities[subscription.toUserId].id}>
+              {state.user.entities[subscription.toUserId].name}
+            </li>
+          ))
         ) : (
-          <div>Нет подписок</div>
+          <li>Подписок нет</li>
         )}
       </ul>
     </div>
   )
 }
 
-export default Subscribe
+export default Subscriptions

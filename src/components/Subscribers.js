@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom'
 import { setState } from '../store/reducers/appReducer'
 import { useStorage } from '../hooks/useStorage'
 
-const Followers = () => {
+const Subscribers = () => {
   const state = useSelector((state) => state.app)
 
   const dispatch = useDispatch()
@@ -23,28 +23,20 @@ const Followers = () => {
   }
 
   return (
-    <div className='followers-component'>
+    <div className='subscribers-component'>
       <ul className='list-group mt-3'>
-        {state.selectedUser.followers.length !== 0 ? (
-          state.selectedUser.followers.map((follower) => {
-            return (
-              <li
-                className='list-group-item'
-                onClick={() =>
-                  onGoToProfile(state.followers.byId[follower].owner)
-                }
-                key={state.followers.byId[follower].id}
-              >
-                {state.followers.byId[follower].owner}
-              </li>
-            )
-          })
+        {state.userData.subscribers !== 0 ? (
+          state.userData.subscribers.map((subscriber) => (
+            <li key={state.user.entities[subscriber.fromUserId].id}>
+              {state.user.entities[subscriber.fromUserId].name}
+            </li>
+          ))
         ) : (
-          <div>Нет подписчиков</div>
+          <li>Подписчиков нет</li>
         )}
       </ul>
     </div>
   )
 }
 
-export default Followers
+export default Subscribers

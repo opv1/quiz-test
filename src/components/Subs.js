@@ -1,13 +1,13 @@
 import React from 'react'
 import { useHistory, useParams } from 'react-router-dom'
-import Followers from './Followers'
-import Subscribe from './Subscribe'
+import Subscriptions from './Subscriptions'
+import Subscribers from './Subscribers'
 import { Button } from './UI/index'
 
 const Subs = () => {
   const history = useHistory()
 
-  const path = useParams()
+  const content = useParams()
 
   return (
     <div className='subs-component content'>
@@ -16,7 +16,11 @@ const Subs = () => {
         onClick={() => history.goBack()}
         name='Назад'
       />
-      {path.path === 'subscribes' ? <Subscribe /> : <Followers />}
+      {content.content === 'subscriptions' ? (
+        <Subscriptions />
+      ) : (
+        <Subscribers />
+      )}
     </div>
   )
 }

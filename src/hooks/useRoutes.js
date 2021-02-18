@@ -7,7 +7,7 @@ export const useRoutes = (isAuthenticated) => {
       <Switch>
         <Route path='/' exact component={PostsPage} />
         <Route path='/profile/:id' component={ProfilePage} />
-        <Route path='/subs/:path' component={SubsPage} />
+        <Route path='/subs/:content' component={SubsPage} />
         <Redirect to='/' />
       </Switch>
     )

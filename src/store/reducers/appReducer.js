@@ -3,6 +3,7 @@ import { SET_STATE } from '../constants'
 const initialState = {
   storageName: 'quizTest',
   isAuth: false,
+  userData: {},
   currentUser: null,
   selectedUser: null,
   user: {

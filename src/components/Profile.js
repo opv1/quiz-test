@@ -71,11 +71,11 @@ const Profile = () => {
   }
 
   const onGoToSubscriptions = (userData) => {
-    console.log(userData)
+    history.push('/subs/subscriptions')
   }
 
   const onGoToSubscribers = (userData) => {
-    console.log(userData)
+    history.push('/subs/subscribers')
   }
 
   const onLogout = () => {
@@ -135,6 +135,9 @@ const Profile = () => {
       }
     })
 
+    state.userData = { subscriptions, subscribers }
+
+    setItem(state.storageName, state)
     setUserData({ subscriptions, subscribers })
   }, [state])
 
